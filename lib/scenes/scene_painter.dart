@@ -19,10 +19,7 @@ abstract class ShaderScenePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     setUniforms(size);
-    canvas.drawRect(
-      Offset.zero & size,
-      Paint()..shader = shader,
-    );
+    canvas.drawRect(Offset.zero & size, Paint()..shader = shader);
   }
 
   /// Override to set shader-specific uniforms
@@ -187,7 +184,10 @@ class CelebrationPainter extends ShaderScenePainter {
     // uniform float u_confetti;
     shader.setFloat(4, confettiAmount);
     // uniform float u_bass;
-    shader.setFloat(5, interaction.shakeIntensity + interaction.hissLevel * 0.5);
+    shader.setFloat(
+      5,
+      interaction.shakeIntensity + interaction.hissLevel * 0.5,
+    );
   }
 }
 

@@ -35,6 +35,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  # For loading event images in Flashback 2025 feature
+  cached_network_image: ^3.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -60,6 +63,13 @@ flutter:
     - shaders/celebration.frag
     - shaders/matrix.frag
     - shaders/cyberpunk_ending.frag
+    # Flashback 2025 shaders
+    - shaders/flashback_fire.frag
+    - shaders/flashback_earthquake.frag
+    - shaders/flashback_memorial.frag
+    - shaders/flashback_rainbow.frag
+    - shaders/flashback_rain.frag
+    - shaders/flashback_tension.frag
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

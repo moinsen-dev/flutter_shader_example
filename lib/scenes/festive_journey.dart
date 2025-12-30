@@ -92,7 +92,8 @@ class _FestiveJourneyState extends State<FestiveJourney>
     });
 
     // When countdown reaches zero, go to fireworks
-    if (_countdownController.isCompleted && _currentScene == FestiveScene.countdown) {
+    if (_countdownController.isCompleted &&
+        _currentScene == FestiveScene.countdown) {
       _goToScene(FestiveScene.fireworks);
       _fireworkTriggerController.forward(from: 0.0);
     }
@@ -107,10 +108,14 @@ class _FestiveJourneyState extends State<FestiveJourney>
       FestiveScene.snowfall => const Duration(seconds: 8),
       FestiveScene.aurora => const Duration(seconds: 10),
       FestiveScene.matrix => const Duration(seconds: 8),
-      FestiveScene.countdown => const Duration(seconds: 12), // Includes countdown
+      FestiveScene.countdown => const Duration(
+        seconds: 12,
+      ), // Includes countdown
       FestiveScene.fireworks => const Duration(seconds: 8),
       FestiveScene.celebration => const Duration(seconds: 12),
-      FestiveScene.cyberpunkEnding => const Duration(seconds: 15), // Grand finale
+      FestiveScene.cyberpunkEnding => const Duration(
+        seconds: 15,
+      ), // Grand finale
     };
 
     _sceneTimer = Timer(duration, () {
@@ -274,7 +279,11 @@ class _FestiveJourneyState extends State<FestiveJourney>
                 builder: (context, child) {
                   return Container(
                     color: Colors.black.withValues(
-                      alpha: Curves.easeInOut.transform(_transitionController.value) * 0.8,
+                      alpha:
+                          Curves.easeInOut.transform(
+                            _transitionController.value,
+                          ) *
+                          0.8,
                     ),
                   );
                 },
@@ -310,58 +319,60 @@ class _FestiveJourneyState extends State<FestiveJourney>
       FestiveScene.countdown => cache.getShader('shaders/countdown.frag'),
       FestiveScene.fireworks => cache.getShader('shaders/fireworks.frag'),
       FestiveScene.celebration => cache.getShader('shaders/celebration.frag'),
-      FestiveScene.cyberpunkEnding => cache.getShader('shaders/cyberpunk_ending.frag'),
+      FestiveScene.cyberpunkEnding => cache.getShader(
+        'shaders/cyberpunk_ending.frag',
+      ),
     };
 
     if (shader == null) return null;
 
     return switch (_currentScene) {
       FestiveScene.snowfall => SnowfallPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          wind: math.sin(time * 0.1) * 0.3,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        wind: math.sin(time * 0.1) * 0.3,
+      ),
       FestiveScene.aurora => AuroraPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+      ),
       FestiveScene.matrix => MatrixPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          revealProgress: _matrixReveal,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        revealProgress: _matrixReveal,
+      ),
       FestiveScene.countdown => CountdownPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          countdown: _countdown,
-          glowPulse: math.sin(time * 3.0) * 0.3,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        countdown: _countdown,
+        glowPulse: math.sin(time * 3.0) * 0.3,
+      ),
       FestiveScene.fireworks => FireworksPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          triggerProgress: _fireworkTriggerController.value,
-          explosionX: _fireworkX,
-          explosionY: _fireworkY,
-          hueShift: _hueShift,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        triggerProgress: _fireworkTriggerController.value,
+        explosionX: _fireworkX,
+        explosionY: _fireworkY,
+        hueShift: _hueShift,
+      ),
       FestiveScene.celebration => CelebrationPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          confettiAmount: 1.0,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        confettiAmount: 1.0,
+      ),
       FestiveScene.cyberpunkEnding => CyberpunkEndingPainter(
-          shader: shader,
-          time: time,
-          interaction: _interaction,
-          glitchIntensity: 0.2 + math.sin(time * 0.5) * 0.1,
-          neonPulse: 1.0,
-        ),
+        shader: shader,
+        time: time,
+        interaction: _interaction,
+        glitchIntensity: 0.2 + math.sin(time * 0.5) * 0.1,
+        neonPulse: 1.0,
+      ),
     };
   }
 
@@ -453,7 +464,10 @@ class _FestiveJourneyState extends State<FestiveJourney>
               GestureDetector(
                 onTap: _toggleAutoPlay,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.black54,
                     borderRadius: BorderRadius.circular(20),

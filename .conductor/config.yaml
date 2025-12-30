@@ -1,0 +1,82 @@
+# Conductor Configuration for Flutter Shader Example
+# Generated: December 30, 2025
+
+project:
+  name: flutter_shader_example
+  type: flutter_app
+  description: GPU-powered shader showcase with Festive Journey and Flashback 2025
+
+# Design References
+design:
+  blueprint_design: .conductor/blueprint_design.md
+
+# Research Documentation
+research:
+  flashback_events: .conductor/research/01_flashback_2025_events.md
+  flashback_images: .conductor/research/02_flashback_images.md
+
+# Architecture Configuration
+architecture:
+  style: feature-based-layered
+  patterns:
+    - singleton
+    - template-method
+    - state-machine
+    - factory-method
+    - data-class
+
+# Technology Stack
+tech_stack:
+  framework: flutter
+  language: dart
+  shader_language: glsl
+  dependencies:
+    - cached_network_image
+
+# Feature Modules
+features:
+  festive_journey:
+    path: lib/scenes/
+    description: Original 7-scene shader celebration
+    shaders:
+      - shaders/snowfall.frag
+      - shaders/aurora.frag
+      - shaders/matrix.frag
+      - shaders/countdown.frag
+      - shaders/fireworks.frag
+      - shaders/celebration.frag
+      - shaders/cyberpunk_ending.frag
+
+  flashback_2025:
+    path: lib/flashback/
+    description: 12-month year-in-review experience
+    shaders:
+      - shaders/flashback_fire.frag
+      - shaders/flashback_earthquake.frag
+      - shaders/flashback_memorial.frag
+      - shaders/flashback_rainbow.frag
+      - shaders/flashback_rain.frag
+      - shaders/flashback_tension.frag
+    # Reused from festive:
+    reused_shaders:
+      - shaders/fireworks.frag
+      - shaders/celebration.frag
+      - shaders/snowfall.frag
+
+# Shared Infrastructure
+infrastructure:
+  shader_cache: lib/shaders/shader_cache.dart
+  interaction_detector: lib/widgets/interaction_detector.dart
+
+# Code Quality Settings
+quality:
+  linter: flutter_lints
+  analysis_options: analysis_options.yaml
+
+# Build Configuration
+build:
+  platforms:
+    - macos
+    - ios
+    - android
+    - web

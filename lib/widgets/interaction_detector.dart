@@ -110,13 +110,15 @@ class _InteractionDetectorState extends State<InteractionDetector> {
         ? DateTime.now().difference(_lastTapTime!).inMilliseconds / 1000.0
         : 999.0;
 
-    widget.onInteraction(InteractionData(
-      mousePosition: _mousePos,
-      isTapped: _isTapped,
-      shakeIntensity: _shakeIntensity,
-      hissLevel: _hissLevel,
-      timeSinceLastTap: timeSinceLastTap,
-    ));
+    widget.onInteraction(
+      InteractionData(
+        mousePosition: _mousePos,
+        isTapped: _isTapped,
+        shakeIntensity: _shakeIntensity,
+        hissLevel: _hissLevel,
+        timeSinceLastTap: timeSinceLastTap,
+      ),
+    );
   }
 
   void _handlePointerMove(PointerEvent event, Size size) {
